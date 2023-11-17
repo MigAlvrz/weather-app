@@ -1,0 +1,22 @@
+<p>weather works!</p>
+<input type="text" #cityname >
+<button (click)="getWeather(this.cityname.value)">Get weather</button>
+
+@if (data()) {
+    <div class="weatherContainer">
+        <div class="dateInfo">
+            <span>{{getDate(data().current?.dt * 1000)}}</span>
+            <h2 class="title">{{places()[0]?.name}}</h2>
+        </div>
+        <div class="tempMain">
+            <img src="{{icon()}}" alt=""/>
+            <p >{{data()?.current?.temp}}° {{data().current.weather[0].description}}</p>
+        </div>
+        <div class="mainInfo">
+            <p>Sensación térmica: {{data()?.current?.feels_like}}</p>
+            <p>Humedad: {{data()?.current?.humidity}}%</p>
+            <p>amanecer: {{getTime(data().current?.sunrise * 1000)}}</p>
+            <p>anochecer: {{getTime(data().current?.sunset * 1000)}}</p>
+        </div> 
+    </div>
+}
